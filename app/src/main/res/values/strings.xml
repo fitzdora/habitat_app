@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">HabitatApp</string>
-    <string name="button_addHabitat">Add Habitat</string>
-    <string name="hint_addHabitatType">Add Habitat Type</string>
+    <string name="button_addName">Add Name</string>
+    <string name="hint_addCommonName">Add Common Name</string>
 </resources>

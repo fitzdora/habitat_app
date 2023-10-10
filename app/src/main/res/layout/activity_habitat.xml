@@ -41,12 +41,12 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/habitatTitle"
+                    android:id="@+id/commonName"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_margin="8dp"
                     android:autofillHints="hint"
-                    android:hint="@string/hint_addHabitatType"
+                    android:hint="@string/hint_addCommonName"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
@@ -64,7 +64,7 @@
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:stateListAnimator="@null"
-                    android:text="@string/button_addHabitat"
+                    android:text="@string/button_addName"
                     android:textColor="@color/colorBackground"
                     android:textSize="16sp" />
 
