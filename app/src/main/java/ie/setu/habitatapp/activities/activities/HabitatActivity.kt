@@ -1,15 +1,18 @@
-package ie.setu.habitatapp
+package ie.setu.habitatapp.activities.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
+import ie.setu.habitatapp.R
 import ie.setu.habitatapp.databinding.ActivityHabitatBinding
+import ie.setu.habitatapp.models.HabitatModel
 import timber.log.Timber
 import timber.log.Timber.Forest.i
 
-class HabitatActivity : AppCompatActivity() {
+class  HabitatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHabitatBinding
+    var speciesType = HabitatModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_habitat)
@@ -22,9 +25,9 @@ class HabitatActivity : AppCompatActivity() {
         i("Habitat Activity Started...")
 
         binding.btnAdd.setOnClickListener(){
-            val commonName = binding.commonName.text.toString()
-            if(commonName.isNotEmpty()){
-                i("add Button Pressed: $commonName")
+            speciesType.commonName = binding.commonName.text.toString()
+            if(speciesType.commonName.isNotEmpty()){
+                i("add Button Pressed: $speciesType.commonName")
             }
             else {
                 Snackbar
