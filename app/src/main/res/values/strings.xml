@@ -2,4 +2,6 @@
     <string name="app_name">HabitatApp</string>
     <string name="button_addName">Add Name</string>
     <string name="hint_addCommonName">Add Common Name</string>
+    <string name="hint_speciesDescription">Description</string>
+    <string name="hint_habitatType">Habitat Type</string>
 </resources>
