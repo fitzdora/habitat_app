@@ -13,5 +13,8 @@ class MainApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         i("Habitat App Started")
+        speciesTypes.add(HabitatModel("Dandelion", "A yellow Flower", "Garden"))
+        speciesTypes.add(HabitatModel("Daisy", "A little star", "Lawn"))
+        speciesTypes.add(HabitatModel("Fuschia", "A Hedgerow filler","Hedgerow"))
     }
 }
