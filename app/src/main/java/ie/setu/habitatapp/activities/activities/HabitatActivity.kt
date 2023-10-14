@@ -36,6 +36,8 @@ class  HabitatActivity : AppCompatActivity() {
                 for (i in app.speciesTypes.indices) {
                     i("SpeciesType[$i]:${this.app.speciesTypes[i]}")
                 }
+                setResult(RESULT_OK)
+                finish()
             }
             else {
                 Snackbar
