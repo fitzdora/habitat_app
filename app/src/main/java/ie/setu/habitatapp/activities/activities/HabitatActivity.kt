@@ -50,7 +50,7 @@ class  HabitatActivity : AppCompatActivity() {
             }
             else {
                 Snackbar
-                    .make(it, "Please Enter a Common Name", Snackbar.LENGTH_LONG)
+                    .make(it,R.string.enter_commonName, Snackbar.LENGTH_LONG)
                     .show()
             }
         }
