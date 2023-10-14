@@ -61,6 +61,7 @@ class SpeciesListActivity : AppCompatActivity(), HabitatListener {
 
     override fun onHabitatClick(species: HabitatModel) {
         val launcherIntent = Intent(this, HabitatActivity::class.java)
+        launcherIntent.putExtra("species_edit", species)
         getClickResult.launch(launcherIntent)
     }
 

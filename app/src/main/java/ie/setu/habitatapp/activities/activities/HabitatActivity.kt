@@ -29,9 +29,16 @@ class  HabitatActivity : AppCompatActivity() {
 
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
-
         app = application as MainApp
         i("Habitat App Activity Started...")
+
+        if(intent.hasExtra("species_edit")) {
+            speciesType = intent.extras?.getParcelable("species_edit")!!
+            binding.commonName.setText(speciesType.commonName)
+            binding.speciesDescription.setText(speciesType.speciesDescription)
+            binding.habitatType.setText(speciesType.habitatType)
+        }
+
         binding.btnAdd.setOnClickListener(){
             speciesType.commonName = binding.commonName.text.toString()
             speciesType.speciesDescription = binding.speciesDescription.text.toString()
