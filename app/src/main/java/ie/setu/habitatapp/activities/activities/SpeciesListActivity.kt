@@ -32,7 +32,8 @@ class SpeciesListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = HabitatAdapter(app.speciesTypes)
+        //binding.recyclerView.adapter = HabitatAdapter(app.speciesTypes)
+        binding.recyclerView.adapter = HabitatAdapter(app.speciesTypes.findAll())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -52,7 +53,7 @@ class SpeciesListActivity : AppCompatActivity() {
 
     private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == Activity.RESULT_OK) {
-            (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.speciesTypes.size)
+            (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.speciesTypes.findAll().size)
         }
     }
 }

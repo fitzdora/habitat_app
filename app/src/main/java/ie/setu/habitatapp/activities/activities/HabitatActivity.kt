@@ -22,7 +22,7 @@ class  HabitatActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_habitat)
+        //setContentView(R.layout.activity_habitat)
 
         binding = ActivityHabitatBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -37,11 +37,7 @@ class  HabitatActivity : AppCompatActivity() {
             speciesType.speciesDescription = binding.speciesDescription.text.toString()
             speciesType.habitatType = binding.habitatType.text.toString()
             if(speciesType.commonName.isNotEmpty()) {
-                app.speciesTypes.add(speciesType.copy())
-                i("add Button Pressed: $speciesType.commonName")
-                for (i in app.speciesTypes.indices) {
-                    i("SpeciesType[$i]:${this.app.speciesTypes[i]}")
-                }
+                app.speciesTypes.create(speciesType.copy())
                 setResult(RESULT_OK)
                 finish()
             }

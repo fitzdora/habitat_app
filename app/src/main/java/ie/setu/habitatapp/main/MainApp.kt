@@ -1,13 +1,15 @@
 package ie.setu.habitatapp.main
 
 import android.app.Application
-import ie.setu.habitatapp.models.HabitatModel
+// import ie.setu.habitatapp.models.HabitatModel
+import ie.setu.habitatapp.models.SpeciesMemStore
 import timber.log.Timber
 import timber.log.Timber.Forest.i
 
 class MainApp : Application() {
 
-    val speciesTypes = ArrayList<HabitatModel>()
+    //val speciesTypes = ArrayList<HabitatModel>()
+    val speciesTypes = SpeciesMemStore()
     override fun onCreate() {
 
         super.onCreate()
