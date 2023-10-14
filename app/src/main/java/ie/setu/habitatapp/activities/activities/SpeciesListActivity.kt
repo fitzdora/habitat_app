@@ -12,9 +12,11 @@ import ie.setu.habitatapp.databinding.ActivitySpeciesListBinding
 import ie.setu.habitatapp.main.MainApp
 import ie.setu.habitatapp.R
 import ie.setu.habitatapp.adapters.HabitatAdapter
+import ie.setu.habitatapp.adapters.HabitatListener
+import ie.setu.habitatapp.models.HabitatModel
 
 
-class SpeciesListActivity : AppCompatActivity() {
+class SpeciesListActivity : AppCompatActivity(), HabitatListener {
 
     lateinit var app:MainApp
     private lateinit var binding: ActivitySpeciesListBinding
@@ -33,7 +35,7 @@ class SpeciesListActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         //binding.recyclerView.adapter = HabitatAdapter(app.speciesTypes)
-        binding.recyclerView.adapter = HabitatAdapter(app.speciesTypes.findAll())
+        binding.recyclerView.adapter = HabitatAdapter(app.speciesTypes.findAll(),this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -53,6 +55,17 @@ class SpeciesListActivity : AppCompatActivity() {
 
     private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == Activity.RESULT_OK) {
+            (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.speciesTypes.findAll().size)
+        }
+    }
+
+    override fun onHabitatClick(species: HabitatModel) {
+        val launcherIntent = Intent(this, HabitatActivity::class.java)
+        getClickResult.launch(launcherIntent)
+    }
+
+    private  val getClickResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if(it.resultCode == Activity.RESULT_OK) {
             (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.speciesTypes.findAll().size)
         }
     }

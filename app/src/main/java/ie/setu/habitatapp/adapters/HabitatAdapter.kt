@@ -5,7 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ie.setu.habitatapp.databinding.CardSpeciesBinding
 import ie.setu.habitatapp.models.HabitatModel
-class HabitatAdapter constructor(private var speciesTypes: List<HabitatModel>) :
+
+interface HabitatListener {
+    fun onHabitatClick(species: HabitatModel)
+}
+class HabitatAdapter constructor(private var speciesTypes: List<HabitatModel>, private val listener: HabitatListener) :
     RecyclerView.Adapter<HabitatAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -15,7 +19,7 @@ class HabitatAdapter constructor(private var speciesTypes: List<HabitatModel>) :
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val species = speciesTypes[holder.adapterPosition]
-        holder.bind(species)
+        holder.bind(species, listener)
     }
 
     override fun getItemCount(): Int = speciesTypes.size
@@ -23,10 +27,11 @@ class HabitatAdapter constructor(private var speciesTypes: List<HabitatModel>) :
     class MainHolder(private val binding: CardSpeciesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(species: HabitatModel) {
+        fun bind(species: HabitatModel, listener: HabitatListener) {
             binding.commonName.text = species.commonName
             binding.speciesDescription.text = species.speciesDescription
             binding.habitatType.text = species.habitatType
+            binding.root.setOnClickListener{ listener.onHabitatClick(species)}
         }
 
     }
