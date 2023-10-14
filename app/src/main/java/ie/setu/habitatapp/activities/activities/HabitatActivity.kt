@@ -1,7 +1,10 @@
 package ie.setu.habitatapp.activities.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.snackbar.Snackbar
 import ie.setu.habitatapp.R
 import ie.setu.habitatapp.databinding.ActivityHabitatBinding
@@ -24,6 +27,9 @@ class  HabitatActivity : AppCompatActivity() {
         binding = ActivityHabitatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.toolbarAdd.title = title
+        setSupportActionBar(binding.toolbarAdd)
+
         app = application as MainApp
         i("Habitat App Activity Started...")
         binding.btnAdd.setOnClickListener(){
@@ -45,5 +51,17 @@ class  HabitatActivity : AppCompatActivity() {
                     .show()
             }
         }
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.item_cancel -> {
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -7,4 +7,10 @@
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/menu_addSpecies"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/item_cancel"
+        android:title="@string/menu_cancelSpecies"
+        app:showAsAction="always"/>
+
 </menu>

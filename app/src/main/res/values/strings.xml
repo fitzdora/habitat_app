@@ -5,4 +5,5 @@
     <string name="hint_speciesDescription">Description</string>
     <string name="hint_habitatType">Habitat Type</string>
     <string name="menu_addSpecies">Add</string>
+    <string name="menu_cancelSpecies">Cancel</string>
 </resources>
