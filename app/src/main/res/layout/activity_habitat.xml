@@ -83,6 +83,20 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
 
+                <Spinner
+                    android:id="@+id/spinner_no_of_species_seen_array"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:hint="@string/hint_addNoOfSpeciesSeen"
+                    android:autofillHints="hint"
+                    android:background="@color/colorBackgroundDark"
+                    android:baselineAligned="false"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:spinnerMode="dropdown"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:entries="@array/no_of_species_seen_array"/>
 
                 <Button
                     android:id="@+id/btnAdd"

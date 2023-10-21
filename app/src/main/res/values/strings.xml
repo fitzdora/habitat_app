@@ -8,4 +8,18 @@
     <string name="menu_addSpecies">Add</string>
     <string name="menu_cancelSpecies">Cancel</string>
     <string name="enter_commonName">Please Enter a Common Name</string>
+    <string name="hint_addNoOfSpeciesSeen">Add No. of Species Seen</string>
+    <string name="no_of_species_seen_title">No of Species Seen</string>
+    <string-array name="no_of_species_seen_array">
+        <item>1 to 5</item>
+        <item>5 to 10</item>
+        <item>10 to 20</item>
+        <item>20 to 30</item>
+        <item>30 to 40</item>
+        <item>40 to 50</item>
+        <item>50 plus</item>
+        <item>over 100</item>
+    </string-array>
+
+
 </resources>

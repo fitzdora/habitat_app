@@ -4,8 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#FFFFFFFF</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#4CAF50</color>
-    <color name="colorBackground">#FFF5D6</color>
-    <color name="colorSecondary">#FFEB3B</color>
-    <color name="colorSecondaryDark">#006A05</color>
+    <color name="colorAccent">#80A030</color>
+    <color name="colorBackground">#FDDCC5</color>
+    <color name="colorBackgroundDark">#FFBA8A</color>
+    <color name="colorSecondary">#FFCA18</color>
+    <color name="colorTertiary">#FF7f27</color>
+    <color name="colorTertiaryDark">#c87736</color>
+    <color name="colorSecondaryDark">#5D7523</color>
 </resources>
