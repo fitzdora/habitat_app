@@ -1,20 +1,25 @@
 package ie.setu.habitatapp.activities.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 import ie.setu.habitatapp.R
 import ie.setu.habitatapp.databinding.ActivityHabitatBinding
+import ie.setu.habitatapp.helpers.showImagePicker
 import ie.setu.habitatapp.main.MainApp
 import ie.setu.habitatapp.models.HabitatModel
 import timber.log.Timber.Forest.i
 
 class  HabitatActivity : AppCompatActivity() {
 
+    private lateinit var imageIntentLauncher: ActivityResultLauncher<Intent>
     private lateinit var binding: ActivityHabitatBinding
     var speciesType = HabitatModel()
     lateinit var app: MainApp
@@ -24,6 +29,8 @@ class  HabitatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         var edit = false
         //setContentView(R.layout.activity_habitat)
+
+        registerImagePickerCallback()
 
         binding = ActivityHabitatBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -64,9 +71,11 @@ class  HabitatActivity : AppCompatActivity() {
 
         binding.chooseImage.setOnClickListener() {
             i("Select image")
+            showImagePicker(imageIntentLauncher)
         }
 
         binding.takeImage.setOnClickListener() {
+            i("Take image")
             /* todo */
         }
     }
@@ -82,4 +91,19 @@ class  HabitatActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    private fun registerImagePickerCallback() {
+        imageIntentLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+        { result ->
+            when(result.resultCode){
+                RESULT_OK -> {
+                    if (result.data != null) {
+                        i("Got Result ${result.data!!.data}")
+                    } //end og if
+                }
+                    RESULT_CANCELED -> { } else -> { }
+                }
+            }
+        }
+
 }
