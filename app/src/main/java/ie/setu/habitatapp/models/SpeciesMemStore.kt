@@ -26,6 +26,7 @@ class SpeciesMemStore : SpeciesStore {
             foundSpecies.commonName = speciesType.commonName
             foundSpecies.speciesDescription = speciesType.speciesDescription
             foundSpecies.habitatType = speciesType.habitatType
+            foundSpecies.image = speciesType.image
             logAll()
         }
     }

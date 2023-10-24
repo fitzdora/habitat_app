@@ -3,6 +3,7 @@ package ie.setu.habitatapp.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ie.setu.habitatapp.databinding.CardSpeciesBinding
 import ie.setu.habitatapp.models.HabitatModel
 
@@ -31,6 +32,7 @@ class HabitatAdapter constructor(private var speciesTypes: List<HabitatModel>, p
             binding.commonName.text = species.commonName
             binding.speciesDescription.text = species.speciesDescription
             binding.habitatType.text = species.habitatType
+            Picasso.get().load(species.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener{ listener.onHabitatClick(species)}
         }
 

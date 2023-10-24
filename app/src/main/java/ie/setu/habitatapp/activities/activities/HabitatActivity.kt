@@ -1,12 +1,13 @@
 package ie.setu.habitatapp.activities.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
-import android.widget.Spinner
+import com.squareup.picasso.Picasso
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
@@ -48,6 +49,12 @@ class  HabitatActivity : AppCompatActivity() {
             binding.commonName.setText(speciesType.commonName)
             binding.speciesDescription.setText(speciesType.speciesDescription)
             binding.habitatType.setText(speciesType.habitatType)
+            Picasso.get()
+                .load(speciesType.image)
+                .into(binding.speciesImage)
+            if (speciesType.image != Uri.EMPTY) {
+                binding.chooseImage.setText(R.string.change_species_image)
+            }
         }
 
         binding.btnAdd.setOnClickListener() {
@@ -99,7 +106,12 @@ class  HabitatActivity : AppCompatActivity() {
                 RESULT_OK -> {
                     if (result.data != null) {
                         i("Got Result ${result.data!!.data}")
-                    } //end og if
+                        speciesType.image = result.data!!.data!!
+                        Picasso.get()
+                            .load(speciesType.image)
+                            .into(binding.speciesImage)
+                        binding.chooseImage.setText(R.string.change_species_image)
+                    } //end of if
                 }
                     RESULT_CANCELED -> { } else -> { }
                 }
