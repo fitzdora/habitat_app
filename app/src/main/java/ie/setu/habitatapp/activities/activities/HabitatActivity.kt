@@ -85,6 +85,10 @@ class  HabitatActivity : AppCompatActivity() {
             i("Take image")
             /* todo */
         }
+
+        binding.speciesLocation.setOnClickListener() {
+            i("Set Location Pressed")
+        }
     }
 
 
