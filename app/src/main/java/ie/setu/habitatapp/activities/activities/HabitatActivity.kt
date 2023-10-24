@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import com.google.android.material.snackbar.Snackbar
 import ie.setu.habitatapp.R
 import ie.setu.habitatapp.databinding.ActivityHabitatBinding
@@ -16,7 +18,6 @@ class  HabitatActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHabitatBinding
     var speciesType = HabitatModel()
     lateinit var app: MainApp
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +34,7 @@ class  HabitatActivity : AppCompatActivity() {
         app = application as MainApp
         i("Habitat App Activity Started...")
 
-        if(intent.hasExtra("species_edit")) {
+        if (intent.hasExtra("species_edit")) {
             edit = true
             binding.btnAdd.setText(R.string.save_species)
             speciesType = intent.extras?.getParcelable("species_edit")!!
@@ -42,26 +43,34 @@ class  HabitatActivity : AppCompatActivity() {
             binding.habitatType.setText(speciesType.habitatType)
         }
 
-        binding.btnAdd.setOnClickListener(){
+        binding.btnAdd.setOnClickListener() {
             speciesType.commonName = binding.commonName.text.toString()
             speciesType.speciesDescription = binding.speciesDescription.text.toString()
             speciesType.habitatType = binding.habitatType.text.toString()
-            if(speciesType.commonName.isEmpty()) {
+            if (speciesType.commonName.isEmpty()) {
                 Snackbar
-                    .make(it,R.string.enter_commonName, Snackbar.LENGTH_LONG)
+                    .make(it, R.string.enter_commonName, Snackbar.LENGTH_LONG)
                     .show()
-            }
-            else {
+            } else {
                 if (edit) {
                     app.speciesTypes.update(speciesType.copy())
                 } else {
                     app.speciesTypes.create(speciesType.copy())
                 }
             }
-                    setResult(RESULT_OK)
-                    finish()
-                }
-            }
+            setResult(RESULT_OK)
+            finish()
+        }
+
+        binding.chooseImage.setOnClickListener() {
+            i("Select image")
+        }
+
+        binding.takeImage.setOnClickListener() {
+            /* todo */
+        }
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_species, menu)

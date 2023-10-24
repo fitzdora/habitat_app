@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">My Habitat App</string>
     <string name="button_addName">Add Name</string>
+    <string name="button_addImage">Add Image</string>
+    <string name="button_takeImage">Take a Photo</string>
     <string name="save_species">Save Species</string>
     <string name="hint_addCommonName">Add Common Name</string>
     <string name="hint_speciesDescription">Description</string>

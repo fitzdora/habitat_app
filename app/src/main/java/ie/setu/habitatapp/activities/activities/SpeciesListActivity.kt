@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.habitatapp.databinding.ActivitySpeciesListBinding
@@ -20,12 +22,22 @@ class SpeciesListActivity : AppCompatActivity(), HabitatListener {
 
     lateinit var app:MainApp
     private lateinit var binding: ActivitySpeciesListBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_species_list)
 
         binding = ActivitySpeciesListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+     /*   to do to test seperatly to work
+
+     val speciesSpinner: Spinner = findViewById(R.id.spinner_no_of_species_seen_array)
+        ArrayAdapter.createFromResource(this, R.array.no_of_species_seen_array, android.R.layout.simple_spinner_item).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            speciesSpinner.adapter = adapter
+        }*/
 
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
