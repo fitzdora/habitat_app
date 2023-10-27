@@ -16,6 +16,7 @@ import ie.setu.habitatapp.databinding.ActivityHabitatBinding
 import ie.setu.habitatapp.helpers.showImagePicker
 import ie.setu.habitatapp.main.MainApp
 import ie.setu.habitatapp.models.HabitatModel
+import ie.setu.habitatapp.models.Location
 import timber.log.Timber.Forest.i
 
 class  HabitatActivity : AppCompatActivity() {
@@ -25,6 +26,7 @@ class  HabitatActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHabitatBinding
     var speciesType = HabitatModel()
     lateinit var app: MainApp
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,7 +92,9 @@ class  HabitatActivity : AppCompatActivity() {
 
         binding.speciesLocation.setOnClickListener() {
             i("Set Location Pressed")
-            val launcherIntent = Intent(this, MapActivity::class.java)
+            //set to Cobh
+            val location = Location(51.8510, -8.29670, 15f)
+            val launcherIntent = Intent(this, MapActivity::class.java).putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
         }
     }

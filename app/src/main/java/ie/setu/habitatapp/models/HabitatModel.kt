@@ -10,3 +10,8 @@ data class HabitatModel(var id: Long = 0,
                         var speciesDescription: String= "",
                         var habitatType: String="",
                         var image: Uri = Uri.EMPTY) : Parcelable
+
+@Parcelize
+data class Location(var lat: Double = 0.0,
+                    var lng: Double = 0.0,
+                    var zoom: Float = 0f) : Parcelable
