@@ -9,11 +9,12 @@ import timber.log.Timber.Forest.i
 class MainApp : Application() {
 
     //val speciesTypes = ArrayList<HabitatModel>()
-    val speciesTypes = SpeciesMemStore()
+    lateinit var speciesTypes : SpeciesMemStore
     override fun onCreate() {
 
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+        speciesTypes = SpeciesMemStore()
         i("Habitat App Started")
         /*speciesTypes.add(HabitatModel("Dandelion", "A yellow Flower", "Garden"))
         speciesTypes.add(HabitatModel("Daisy", "A little star", "Lawn"))
