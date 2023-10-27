@@ -19,32 +19,27 @@ import ie.setu.habitatapp.models.HabitatModel
 import ie.setu.habitatapp.models.Location
 import timber.log.Timber.Forest.i
 
+
 class  HabitatActivity : AppCompatActivity() {
 
-    private lateinit var imageIntentLauncher: ActivityResultLauncher<Intent>
-    private lateinit var mapIntentLauncher: ActivityResultLauncher<Intent>
     private lateinit var binding: ActivityHabitatBinding
     var speciesType = HabitatModel()
     lateinit var app: MainApp
-
-    var location = Location(51.851, -8.2967, 15f)
-
-
+    private lateinit var imageIntentLauncher: ActivityResultLauncher<Intent>
+    private lateinit var mapIntentLauncher: ActivityResultLauncher<Intent>
+    var edit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var edit = false
-        //setContentView(R.layout.activity_habitat)
 
-        registerImagePickerCallback()
-        registerMapCallBack()
+        edit = false
+        //setContentView(R.layout.activity_habitat)
 
         binding = ActivityHabitatBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
+
         app = application as MainApp
         i("Habitat App Activity Started...")
 
@@ -78,27 +73,36 @@ class  HabitatActivity : AppCompatActivity() {
                     app.speciesTypes.create(speciesType.copy())
                 }
             }
+            i("Add button pressed: $speciesType")
             setResult(RESULT_OK)
             finish()
         }
 
-        binding.chooseImage.setOnClickListener() {
+        binding.chooseImage.setOnClickListener {
             i("Select image")
             showImagePicker(imageIntentLauncher)
         }
 
-        binding.takeImage.setOnClickListener() {
+        binding.takeImage.setOnClickListener {
             i("Take image")
             /* todo */
         }
 
-        binding.speciesLocation.setOnClickListener() {
+        binding.speciesLocation.setOnClickListener {
             i("Set Location Pressed")
-            //set to Cobh
-            // val location = Location(51.8510, -8.29670, 15f)
+            // set to Cobh
+            val location = Location(51.8510, -8.29670, 15f)
+            if (speciesType.zoom != 0f) {
+                location.lat = speciesType.lat
+                location.lng = speciesType.lng
+                location.zoom = speciesType.zoom
+            }
             val launcherIntent = Intent(this, MapActivity::class.java).putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
         }
+
+        registerImagePickerCallback()
+        registerMapCallBack()
     }
 
 
@@ -140,8 +144,11 @@ class  HabitatActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Location ${result.data.toString()}")
-                            location = result.data!!.extras?.getParcelable("location")!!
+                            val location = result.data!!.extras?.getParcelable<Location>("location")!!
                             i("Location == $location")
+                            speciesType.lat = location.lat
+                            speciesType.lng = location.lng
+                            speciesType.zoom = location.zoom
                         } // end of if
                     }
 

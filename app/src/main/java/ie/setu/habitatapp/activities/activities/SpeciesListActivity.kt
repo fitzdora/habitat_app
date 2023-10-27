@@ -20,25 +20,14 @@ import ie.setu.habitatapp.models.HabitatModel
 
 class SpeciesListActivity : AppCompatActivity(), HabitatListener {
 
-    lateinit var app:MainApp
+    lateinit var app: MainApp
     private lateinit var binding: ActivitySpeciesListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_species_list)
-
         binding = ActivitySpeciesListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-     /*   to do to test seperatly to work
-
-     val speciesSpinner: Spinner = findViewById(R.id.spinner_no_of_species_seen_array)
-        ArrayAdapter.createFromResource(this, R.array.no_of_species_seen_array, android.R.layout.simple_spinner_item).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            speciesSpinner.adapter = adapter
-        }*/
-
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
 
@@ -48,6 +37,14 @@ class SpeciesListActivity : AppCompatActivity(), HabitatListener {
         binding.recyclerView.layoutManager = layoutManager
         //binding.recyclerView.adapter = HabitatAdapter(app.speciesTypes)
         binding.recyclerView.adapter = HabitatAdapter(app.speciesTypes.findAll(),this)
+
+        /*   to do to test seperatly to work
+
+   val speciesSpinner: Spinner = findViewById(R.id.spinner_no_of_species_seen_array)
+      ArrayAdapter.createFromResource(this, R.array.no_of_species_seen_array, android.R.layout.simple_spinner_item).also { adapter ->
+          adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+          speciesSpinner.adapter = adapter
+      }*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

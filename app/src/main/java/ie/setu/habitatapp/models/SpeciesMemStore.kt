@@ -27,6 +27,9 @@ class SpeciesMemStore : SpeciesStore {
             foundSpecies.speciesDescription = speciesType.speciesDescription
             foundSpecies.habitatType = speciesType.habitatType
             foundSpecies.image = speciesType.image
+            foundSpecies.lat = speciesType.lat
+            foundSpecies.lng = speciesType.lng
+            foundSpecies.zoom = speciesType.zoom
             logAll()
         }
     }
