@@ -21,6 +21,7 @@ import timber.log.Timber.Forest.i
 class  HabitatActivity : AppCompatActivity() {
 
     private lateinit var imageIntentLauncher: ActivityResultLauncher<Intent>
+    private lateinit var mapIntentLauncher: ActivityResultLauncher<Intent>
     private lateinit var binding: ActivityHabitatBinding
     var speciesType = HabitatModel()
     lateinit var app: MainApp
@@ -32,6 +33,7 @@ class  HabitatActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_habitat)
 
         registerImagePickerCallback()
+        registerMapCallBack()
 
         binding = ActivityHabitatBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -88,6 +90,8 @@ class  HabitatActivity : AppCompatActivity() {
 
         binding.speciesLocation.setOnClickListener() {
             i("Set Location Pressed")
+            val launcherIntent = Intent(this, MapActivity::class.java)
+            mapIntentLauncher.launch(launcherIntent)
         }
     }
 
@@ -121,5 +125,10 @@ class  HabitatActivity : AppCompatActivity() {
                 }
             }
         }
+
+    private fun registerMapCallBack() {
+        mapIntentLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+        { i("Map Loaded")}
+    }
 
 }

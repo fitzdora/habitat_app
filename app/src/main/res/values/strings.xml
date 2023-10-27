@@ -25,6 +25,7 @@
         <item>50 plus</item>
         <item>over 100</item>
     </string-array>
+    <string name="title_activity_map">MapActivity</string>
 
 
 </resources>
