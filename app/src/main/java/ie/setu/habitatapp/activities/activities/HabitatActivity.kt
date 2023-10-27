@@ -27,6 +27,8 @@ class  HabitatActivity : AppCompatActivity() {
     var speciesType = HabitatModel()
     lateinit var app: MainApp
 
+    var location = Location(51.851, -8.2967, 15f)
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,7 +95,7 @@ class  HabitatActivity : AppCompatActivity() {
         binding.speciesLocation.setOnClickListener() {
             i("Set Location Pressed")
             //set to Cobh
-            val location = Location(51.8510, -8.29670, 15f)
+            // val location = Location(51.8510, -8.29670, 15f)
             val launcherIntent = Intent(this, MapActivity::class.java).putExtra("location", location)
             mapIntentLauncher.launch(launcherIntent)
         }
@@ -131,8 +133,22 @@ class  HabitatActivity : AppCompatActivity() {
         }
 
     private fun registerMapCallBack() {
-        mapIntentLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-        { i("Map Loaded")}
+        mapIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { result ->
+                when (result.resultCode) {
+                    RESULT_OK -> {
+                        if (result.data != null) {
+                            i("Got Location ${result.data.toString()}")
+                            location = result.data!!.extras?.getParcelable("location")!!
+                            i("Location == $location")
+                        } // end of if
+                    }
+
+                    RESULT_CANCELED -> {}
+                    else -> {}
+                }
+            }
     }
 
 }
