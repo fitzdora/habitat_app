@@ -80,7 +80,7 @@ class  HabitatActivity : AppCompatActivity() {
 
         binding.chooseImage.setOnClickListener {
             i("Select image")
-            showImagePicker(imageIntentLauncher)
+            showImagePicker(imageIntentLauncher, this)
         }
 
         binding.takeImage.setOnClickListener {
@@ -112,6 +112,11 @@ class  HabitatActivity : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
+            R.id.item_delete -> {
+                app.speciesTypes.delete(speciesType)
+                setResult(RESULT_OK)
+                finish()
+            }
             R.id.item_cancel -> { finish() }
         }
         return super.onOptionsItemSelected(item)
@@ -124,7 +129,9 @@ class  HabitatActivity : AppCompatActivity() {
                 RESULT_OK -> {
                     if (result.data != null) {
                         i("Got Result ${result.data!!.data}")
-                        speciesType.image = result.data!!.data!!
+                        val image = result.data!!.data!!
+                        contentResolver.takePersistableUriPermission(image, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                        speciesType.image = image
                         Picasso.get()
                             .load(speciesType.image)
                             .into(binding.speciesImage)

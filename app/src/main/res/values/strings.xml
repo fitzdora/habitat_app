@@ -12,6 +12,7 @@
     <string name="hint_habitatType">Habitat Type</string>
     <string name="menu_addSpecies">Add</string>
     <string name="menu_cancelSpecies">Cancel</string>
+    <string name="menu_deleteSpecies">Delete</string>
     <string name="enter_commonName">Please Enter a Common Name</string>
     <string name="hint_addNoOfSpeciesSeen">Add No. of Species Seen</string>
     <string name="no_of_species_seen_title">No of Species Seen</string>

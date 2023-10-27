@@ -34,6 +34,10 @@ class SpeciesMemStore : SpeciesStore {
         }
     }
 
+    override fun delete(speciesType: HabitatModel) {
+        speciesTypes.remove(speciesType)
+    }
+
     fun logAll() {
         speciesTypes.forEach{ i("${it}")}
     }
