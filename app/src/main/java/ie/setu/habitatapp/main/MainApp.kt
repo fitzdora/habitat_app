@@ -15,8 +15,8 @@ class MainApp : Application() {
 
         super.onCreate()
         Timber.plant(Timber.DebugTree())
-        speciesTypes = SpeciesMemStore()
-        // speciesTypes = SpeciesJSONStore(applicationContext)
+        //speciesTypes = SpeciesMemStore()
+        speciesTypes = SpeciesJSONStore(applicationContext)
         i("Habitat App Started")
         /*speciesTypes.add(HabitatModel("Dandelion", "A yellow Flower", "Garden"))
         speciesTypes.add(HabitatModel("Daisy", "A little star", "Lawn"))

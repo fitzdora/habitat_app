@@ -59,6 +59,10 @@ class SpeciesListActivity : AppCompatActivity(), HabitatListener {
                 val launcherIntent = Intent(this, HabitatActivity::class.java)
                 getResult.launch(launcherIntent)
             }
+            R.id.item_map -> {
+                val launcherIntent = Intent(this, SpeciesMapsActivity::class.java)
+                mapIntentLauncher.launch(launcherIntent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -83,5 +87,7 @@ class SpeciesListActivity : AppCompatActivity(), HabitatListener {
         else //Deleting (link to onOptionsItemSelected in HabitatActivity
             if (it.resultCode == 99) (binding.recyclerView.adapter)?.notifyItemRemoved(position)
     }
+
+    private val mapIntentLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {}
 }
 
