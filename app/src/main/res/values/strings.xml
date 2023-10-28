@@ -27,5 +27,5 @@
         <item>over 100</item>
     </string-array>
     <string name="title_activity_map">MapActivity</string>
-    <string name="title_activity_species_maps">SpeciesMapsActivity</string>
+    <string name="title_activity_species_maps">Map of All Species</string>
 </resources>
