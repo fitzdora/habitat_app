@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import com.squareup.picasso.Picasso
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.get
 import com.google.android.material.snackbar.Snackbar
 import ie.setu.habitatapp.R
 import ie.setu.habitatapp.databinding.ActivityHabitatBinding
@@ -32,7 +33,7 @@ class  HabitatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        edit = false
+        edit = false //maybe change to true here
         //setContentView(R.layout.activity_habitat)
 
         binding = ActivityHabitatBinding.inflate(layoutInflater)
@@ -108,13 +109,16 @@ class  HabitatActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_species, menu)
+        if (edit) if (menu != null) {
+            menu.getItem(0).isVisible = true
+        }
         return super.onCreateOptionsMenu(menu)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.item_delete -> {
+                setResult(99)
                 app.speciesTypes.delete(speciesType)
-                setResult(RESULT_OK)
                 finish()
             }
             R.id.item_cancel -> { finish() }

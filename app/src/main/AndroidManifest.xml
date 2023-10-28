@@ -16,6 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HabitatApp"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.activities.SpeciesMapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_species_maps"
+            android:theme="@style/Theme.HabitatApp" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

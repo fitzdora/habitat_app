@@ -8,7 +8,7 @@ import ie.setu.habitatapp.databinding.CardSpeciesBinding
 import ie.setu.habitatapp.models.HabitatModel
 
 interface HabitatListener {
-    fun onHabitatClick(species: HabitatModel)
+    fun onHabitatClick(species: HabitatModel, position: Int)
 }
 class HabitatAdapter constructor(private var speciesTypes: List<HabitatModel>, private val listener: HabitatListener) :
     RecyclerView.Adapter<HabitatAdapter.MainHolder>() {
@@ -33,7 +33,7 @@ class HabitatAdapter constructor(private var speciesTypes: List<HabitatModel>, p
             binding.speciesDescription.text = species.speciesDescription
             binding.habitatType.text = species.habitatType
             Picasso.get().load(species.image).resize(200,200).into(binding.imageIcon)
-            binding.root.setOnClickListener{ listener.onHabitatClick(species)}
+            binding.root.setOnClickListener{ listener.onHabitatClick(species, adapterPosition)}
         }
 
     }

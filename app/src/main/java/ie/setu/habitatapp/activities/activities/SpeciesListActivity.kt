@@ -22,6 +22,7 @@ class SpeciesListActivity : AppCompatActivity(), HabitatListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivitySpeciesListBinding
+    private var position: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,9 +69,10 @@ class SpeciesListActivity : AppCompatActivity(), HabitatListener {
         }
     }
 
-    override fun onHabitatClick(species: HabitatModel) {
+    override fun onHabitatClick(species: HabitatModel, pos : Int) {
         val launcherIntent = Intent(this, HabitatActivity::class.java)
         launcherIntent.putExtra("species_edit", species)
+        position = pos
         getClickResult.launch(launcherIntent)
     }
 
@@ -78,6 +80,8 @@ class SpeciesListActivity : AppCompatActivity(), HabitatListener {
         if(it.resultCode == Activity.RESULT_OK) {
             (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.speciesTypes.findAll().size)
         }
+        else //Deleting (link to onOptionsItemSelected in HabitatActivity
+            if (it.resultCode == 99) (binding.recyclerView.adapter)?.notifyItemRemoved(position)
     }
 }
 

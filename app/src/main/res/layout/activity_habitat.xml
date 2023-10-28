@@ -50,9 +50,16 @@
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
-                    android:padding="8dp"
+                    android:padding="4dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/speciesImage"
+                    android:layout_width="381dp"
+                    android:layout_height="171dp"
+                    android:layout_margin="16dp"
+                    app:srcCompat="@mipmap/ic_launcher" />
 
                 <EditText
                     android:id="@+id/speciesDescription"
@@ -64,7 +71,7 @@
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
-                    android:padding="8dp"
+                    android:padding="4dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
 
@@ -79,57 +86,57 @@
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
-                    android:padding="8dp"
+                    android:padding="4dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
 
                 <Spinner
                     android:id="@+id/spinner_no_of_species_seen_array"
-                    android:layout_width="match_parent"
+                    android:layout_width="364dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:background="@color/colorBackgroundDark"
                     android:baselineAligned="false"
                     android:entries="@array/no_of_species_seen_array"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
                     android:spinnerMode="dropdown"
                     android:textColor="@color/colorPrimaryDark" />
 
                 <Button
-                    android:id="@+id/btnAdd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:background="@color/colorAccent"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:stateListAnimator="@null"
-                    android:text="@string/button_addName"
-                    android:textColor="@color/colorBackground"
-                    android:textSize="16sp" />
-
-                <Button
                     android:id="@+id/chooseImage"
-                    android:layout_width="match_parent"
+                    android:layout_width="364dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:background="@color/colorAccent"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
                     android:stateListAnimator="@null"
                     android:text="@string/button_addImage"
                     android:textColor="@color/colorBackground"
                     android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/takeImage"
-                    android:layout_width="match_parent"
+                    android:id="@+id/btnAdd"
+                    android:layout_width="151dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:background="@color/colorAccent"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/button_addName"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/takeImage"
+                    android:layout_width="151dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@color/colorAccent"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
                     android:stateListAnimator="@null"
                     android:text="@string/button_takeImage"
                     android:textColor="@color/colorBackground"
@@ -137,22 +144,16 @@
 
                 <Button
                     android:id="@+id/speciesLocation"
-                    android:layout_width="match_parent"
+                    android:layout_width="151dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:background="@color/colorAccent"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
                     android:stateListAnimator="@null"
                     android:text="@string/button_location"
                     android:textColor="@color/colorBackground"
                     android:textSize="16sp" />
-
-                <ImageView
-                    android:id="@+id/speciesImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@mipmap/ic_launcher" />
 
             </LinearLayout>
         </ScrollView>
