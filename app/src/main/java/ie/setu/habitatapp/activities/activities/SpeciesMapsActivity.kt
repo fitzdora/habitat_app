@@ -16,15 +16,22 @@ class SpeciesMapsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySpeciesMapsBinding
     private lateinit var contentBinding: ContentSpeciesMapsBinding
     lateinit var map: GoogleMap
+    lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySpeciesMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+        app = application as MainApp
 
         contentBinding = ContentSpeciesMapsBinding.bind(binding.root)
         contentBinding.mapView.onCreate(savedInstanceState)
+
+        contentBinding.mapView.getMapAsync {
+            map = it
+            configureMap()
+        }
 
     }
 
@@ -51,6 +58,16 @@ class SpeciesMapsActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         contentBinding.mapView.onSaveInstanceState(outState)
+    }
+
+    private fun configureMap(){
+        map.uiSettings.isZoomControlsEnabled = true
+        app.speciesTypes.findAll().forEach {
+            val loc = LatLng(it.lat, it.lng)
+            val options = MarkerOptions().title(it.commonName).position(loc)
+            map.addMarker(options)?.tag = it.id
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
+        }
     }
 
 }
