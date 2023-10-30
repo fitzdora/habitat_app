@@ -37,8 +37,8 @@
 
         <Button
             android:id="@+id/chooseImage"
-            android:layout_width="138dp"
-            android:layout_height="51dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="116dp"
             android:layout_marginEnd="47dp"
             android:layout_marginBottom="220dp"
@@ -56,8 +56,8 @@
 
         <Button
             android:id="@+id/speciesLocation"
-            android:layout_width="138dp"
-            android:layout_height="51dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="116dp"
             android:layout_marginBottom="220dp"
             android:background="@color/colorAccent"
@@ -74,7 +74,7 @@
         <Button
             android:id="@+id/takeImage"
             android:layout_width="237dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="152dp"
             android:background="@color/colorAccent"
             android:paddingTop="4dp"
@@ -90,7 +90,7 @@
         <Button
             android:id="@+id/btnAdd"
             android:layout_width="325dp"
-            android:layout_height="51dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@color/colorAccent"
             android:paddingTop="2dp"
