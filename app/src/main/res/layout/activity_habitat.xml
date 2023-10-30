@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="116dp"
             android:layout_marginEnd="47dp"
-            android:layout_marginBottom="220dp"
+            android:layout_marginBottom="180dp"
             android:background="@color/colorAccent"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
@@ -59,7 +59,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="116dp"
-            android:layout_marginBottom="220dp"
+            android:layout_marginBottom="180dp"
             android:background="@color/colorAccent"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
@@ -75,7 +75,7 @@
             android:id="@+id/takeImage"
             android:layout_width="237dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="152dp"
+            android:layout_marginBottom="116dp"
             android:background="@color/colorAccent"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
@@ -89,7 +89,7 @@
 
         <Button
             android:id="@+id/btnAdd"
-            android:layout_width="325dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@color/colorAccent"
@@ -103,9 +103,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/habitatType" />
 
-        <ImageView
+         <ImageView
             android:id="@+id/speciesImage"
-            android:layout_width="325dp"
+            android:layout_width="300dp"
             android:layout_height="177dp"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,13 +115,14 @@
 
         <EditText
             android:id="@+id/commonName"
-            android:layout_width="325dp"
-            android:layout_height="33dp"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
             android:layout_marginTop="24dp"
             android:autofillHints="hint"
             android:hint="@string/hint_addCommonName"
             android:maxLength="40"
             android:maxLines="1"
+            android:inputType="text"
             android:padding="4dp"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp"
@@ -133,14 +134,15 @@
 
         <EditText
             android:id="@+id/speciesDescription"
-            android:layout_width="325dp"
-            android:layout_height="33dp"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
             android:layout_marginTop="12dp"
             android:autofillHints="hint"
             android:hint="@string/hint_speciesDescription"
             android:maxLength="40"
             android:maxLines="1"
             android:padding="4dp"
+            android:inputType="text"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -150,10 +152,11 @@
 
         <EditText
             android:id="@+id/habitatType"
-            android:layout_width="325dp"
-            android:layout_height="33dp"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
             android:layout_marginTop="12dp"
             android:autofillHints="hint"
+            android:inputType="text"
             android:hint="@string/hint_habitatType"
             android:maxLength="25"
             android:maxLines="1"
