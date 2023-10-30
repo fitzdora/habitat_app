@@ -11,7 +11,7 @@ import ie.setu.habitatapp.databinding.ActivitySpeciesMapsBinding
 import ie.setu.habitatapp.databinding.ContentSpeciesMapsBinding
 import ie.setu.habitatapp.main.MainApp
 
-class SpeciesMapsActivity : AppCompatActivity() {
+class SpeciesMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
     private lateinit var binding: ActivitySpeciesMapsBinding
     private lateinit var contentBinding: ContentSpeciesMapsBinding
@@ -67,7 +67,14 @@ class SpeciesMapsActivity : AppCompatActivity() {
             val options = MarkerOptions().title(it.commonName).position(loc)
             map.addMarker(options)?.tag = it.id
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
+            map.setOnMarkerClickListener(this)
         }
     }
+
+    override fun onMarkerClick(marker: Marker): Boolean {
+       contentBinding.currentTitle.text = marker.title
+        return false
+    }
+
 
 }
