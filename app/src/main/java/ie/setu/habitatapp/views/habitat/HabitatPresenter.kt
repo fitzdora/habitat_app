@@ -6,7 +6,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import ie.setu.habitatapp.activities.activities.HabitatView
-import ie.setu.habitatapp.activities.activities.MapActivity
+import ie.setu.habitatapp.activities.activities.EditLocationView
 import ie.setu.habitatapp.databinding.ActivityHabitatBinding
 import ie.setu.habitatapp.helpers.showImagePicker
 import ie.setu.habitatapp.main.MainApp
@@ -68,7 +68,7 @@ class HabitatPresenter(private val view: HabitatView) {
             location.lng = speciesType.lng
             location.zoom = speciesType.zoom
         }
-        val launcherIntent = Intent(view, MapActivity::class.java).putExtra("location", location)
+        val launcherIntent = Intent(view, EditLocationView::class.java).putExtra("location", location)
         mapIntentLauncher.launch(launcherIntent)
     }
 

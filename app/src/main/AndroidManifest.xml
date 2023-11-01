@@ -27,7 +27,7 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".activities.activities.MapActivity"
+            android:name=".activities.activities.EditLocationView"
             android:exported="false"
             android:label="@string/title_activity_map" />
         <activity
