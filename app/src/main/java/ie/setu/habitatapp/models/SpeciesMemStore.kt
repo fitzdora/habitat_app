@@ -38,6 +38,11 @@ class SpeciesMemStore : SpeciesStore {
         speciesTypes.remove(speciesType)
     }
 
+    override fun findById(id: Long): HabitatModel? {
+        val foundSpecies: HabitatModel? = speciesTypes.find { it.id == id }
+        return foundSpecies
+    }
+
     fun logAll() {
         speciesTypes.forEach{ i("${it}")}
     }

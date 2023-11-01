@@ -43,7 +43,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".activities.activities.HabitatActivity">
+        <activity android:name=".activities.activities.HabitatView">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

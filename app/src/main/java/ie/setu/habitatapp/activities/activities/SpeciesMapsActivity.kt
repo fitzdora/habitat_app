@@ -7,6 +7,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.squareup.picasso.Picasso
 import ie.setu.habitatapp.databinding.ActivitySpeciesMapsBinding
 import ie.setu.habitatapp.databinding.ContentSpeciesMapsBinding
 import ie.setu.habitatapp.main.MainApp
@@ -72,7 +73,11 @@ class SpeciesMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-       contentBinding.currentTitle.text = marker.title
+        val tag = marker.tag as Long
+        val speciesType = app.speciesTypes.findById(tag)
+        contentBinding.currentTitle.text = speciesType!!.commonName
+        contentBinding.currentDescription.text = speciesType.speciesDescription
+        Picasso.get().load(speciesType.image).into(contentBinding.currentImage)
         return false
     }
 

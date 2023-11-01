@@ -61,6 +61,11 @@ class SpeciesJSONStore(private val context: Context) : SpeciesStore {
         serialize()
     }
 
+    override fun findById(id: Long): HabitatModel? {
+        val foundSpecies: HabitatModel? = speciesTypes.find { it.id == id }
+        return foundSpecies
+    }
+
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(speciesTypes, listType)
         write(context, JSON_FILE, jsonString)

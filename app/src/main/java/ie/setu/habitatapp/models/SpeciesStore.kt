@@ -5,4 +5,5 @@ interface SpeciesStore {
     fun create(speciesType:HabitatModel)
     fun update(speciesType: HabitatModel)
     fun delete(speciesType: HabitatModel)
+    fun findById(id:Long): HabitatModel?
 }

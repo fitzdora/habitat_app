@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.habitatapp.databinding.ActivitySpeciesListBinding
@@ -56,7 +54,7 @@ class SpeciesListActivity : AppCompatActivity(), HabitatListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.item_add -> {
-                val launcherIntent = Intent(this, HabitatActivity::class.java)
+                val launcherIntent = Intent(this, HabitatView::class.java)
                 getResult.launch(launcherIntent)
             }
             R.id.item_map -> {
@@ -74,7 +72,7 @@ class SpeciesListActivity : AppCompatActivity(), HabitatListener {
     }
 
     override fun onHabitatClick(species: HabitatModel, pos : Int) {
-        val launcherIntent = Intent(this, HabitatActivity::class.java)
+        val launcherIntent = Intent(this, HabitatView::class.java)
         launcherIntent.putExtra("species_edit", species)
         position = pos
         getClickResult.launch(launcherIntent)
@@ -84,7 +82,7 @@ class SpeciesListActivity : AppCompatActivity(), HabitatListener {
         if(it.resultCode == Activity.RESULT_OK) {
             (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.speciesTypes.findAll().size)
         }
-        else //Deleting (link to onOptionsItemSelected in HabitatActivity
+        else //Deleting (link to onOptionsItemSelected in HabitatView
             if (it.resultCode == 99) (binding.recyclerView.adapter)?.notifyItemRemoved(position)
     }
 
