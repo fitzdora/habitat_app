@@ -1,22 +1,15 @@
-package ie.setu.habitatapp.activities.activities
+package ie.setu.habitatapp.views.habitat
 
-import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.squareup.picasso.Picasso
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 import ie.setu.habitatapp.R
 import ie.setu.habitatapp.databinding.ActivityHabitatBinding
-import ie.setu.habitatapp.helpers.showImagePicker
-import ie.setu.habitatapp.main.MainApp
 import ie.setu.habitatapp.models.HabitatModel
-import ie.setu.habitatapp.models.Location
-import ie.setu.habitatapp.views.habitat.HabitatPresenter
 import timber.log.Timber.Forest.i
 
 

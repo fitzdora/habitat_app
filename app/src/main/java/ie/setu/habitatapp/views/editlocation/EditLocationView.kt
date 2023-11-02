@@ -1,4 +1,4 @@
-package ie.setu.habitatapp.activities.activities
+package ie.setu.habitatapp.views.editlocation
 
 
 import androidx.appcompat.app.AppCompatActivity

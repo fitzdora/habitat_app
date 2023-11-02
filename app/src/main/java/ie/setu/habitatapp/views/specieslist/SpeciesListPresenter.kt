@@ -4,9 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import ie.setu.habitatapp.activities.activities.HabitatView
-import ie.setu.habitatapp.activities.activities.SpeciesListView
-import ie.setu.habitatapp.databinding.ActivitySpeciesListBinding
+import ie.setu.habitatapp.views.habitat.HabitatView
 import ie.setu.habitatapp.main.MainApp
 import ie.setu.habitatapp.models.HabitatModel
 

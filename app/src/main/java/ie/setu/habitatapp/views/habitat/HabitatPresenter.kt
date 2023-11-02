@@ -5,8 +5,7 @@ import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import ie.setu.habitatapp.activities.activities.HabitatView
-import ie.setu.habitatapp.activities.activities.EditLocationView
+import ie.setu.habitatapp.views.editlocation.EditLocationView
 import ie.setu.habitatapp.databinding.ActivityHabitatBinding
 import ie.setu.habitatapp.helpers.showImagePicker
 import ie.setu.habitatapp.main.MainApp

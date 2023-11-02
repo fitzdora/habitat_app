@@ -1,4 +1,4 @@
-package ie.setu.habitatapp.activities.activities
+package ie.setu.habitatapp.views.map
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -11,13 +11,15 @@ import com.squareup.picasso.Picasso
 import ie.setu.habitatapp.databinding.ActivitySpeciesMapsBinding
 import ie.setu.habitatapp.databinding.ContentSpeciesMapsBinding
 import ie.setu.habitatapp.main.MainApp
+import ie.setu.habitatapp.models.HabitatModel
+import ie.setu.habitatapp.views.map.SpeciesMapPresenter
 
-class SpeciesMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
+class SpeciesMapView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
     private lateinit var binding: ActivitySpeciesMapsBinding
     private lateinit var contentBinding: ContentSpeciesMapsBinding
-    lateinit var map: GoogleMap
     lateinit var app: MainApp
+    lateinit var presenter: SpeciesMapPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,14 +28,28 @@ class SpeciesMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener
         setSupportActionBar(binding.toolbar)
         app = application as MainApp
 
+        presenter = SpeciesMapPresenter(this)
+
         contentBinding = ContentSpeciesMapsBinding.bind(binding.root)
         contentBinding.mapView.onCreate(savedInstanceState)
-
         contentBinding.mapView.getMapAsync {
-            map = it
-            configureMap()
+            presenter.doPopulateMap(it)
         }
 
+    }
+
+    fun showSpecies(speciesType: HabitatModel){
+        contentBinding.currentTitle.text = speciesType.commonName
+        contentBinding.currentDescription.text = speciesType.speciesDescription
+        Picasso.get()
+            .load(speciesType.image)
+            .into(contentBinding.currentImage)
+
+    }
+
+    override fun onMarkerClick(marker: Marker): Boolean {
+        presenter.doMarkerSelected(marker)
+        return true
     }
 
     override fun onDestroy() {
@@ -60,26 +76,5 @@ class SpeciesMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener
         super.onSaveInstanceState(outState)
         contentBinding.mapView.onSaveInstanceState(outState)
     }
-
-    private fun configureMap(){
-        map.uiSettings.isZoomControlsEnabled = true
-        app.speciesTypes.findAll().forEach {
-            val loc = LatLng(it.lat, it.lng)
-            val options = MarkerOptions().title(it.commonName).position(loc)
-            map.addMarker(options)?.tag = it.id
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
-            map.setOnMarkerClickListener(this)
-        }
-    }
-
-    override fun onMarkerClick(marker: Marker): Boolean {
-        val tag = marker.tag as Long
-        val speciesType = app.speciesTypes.findById(tag)
-        contentBinding.currentTitle.text = speciesType!!.commonName
-        contentBinding.currentDescription.text = speciesType.speciesDescription
-        Picasso.get().load(speciesType.image).into(contentBinding.currentImage)
-        return false
-    }
-
 
 }

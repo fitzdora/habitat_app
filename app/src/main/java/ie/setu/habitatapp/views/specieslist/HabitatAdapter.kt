@@ -1,4 +1,4 @@
-package ie.setu.habitatapp.adapters
+package ie.setu.habitatapp.views.specieslist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

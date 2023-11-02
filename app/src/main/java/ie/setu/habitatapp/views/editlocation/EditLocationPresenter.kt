@@ -7,7 +7,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import ie.setu.habitatapp.activities.activities.EditLocationView
 import ie.setu.habitatapp.models.Location
 
 class EditLocationPresenter(val view: EditLocationView) {

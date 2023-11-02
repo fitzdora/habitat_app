@@ -1,4 +1,4 @@
-package ie.setu.habitatapp.activities.activities
+package ie.setu.habitatapp.views.specieslist
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -9,10 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.habitatapp.databinding.ActivitySpeciesListBinding
 import ie.setu.habitatapp.main.MainApp
 import ie.setu.habitatapp.R
-import ie.setu.habitatapp.adapters.HabitatAdapter
-import ie.setu.habitatapp.adapters.HabitatListener
 import ie.setu.habitatapp.models.HabitatModel
-import ie.setu.habitatapp.views.specieslist.SpeciesListPresenter
 
 
 class SpeciesListView : AppCompatActivity(), HabitatListener {
