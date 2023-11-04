@@ -3,16 +3,12 @@ package ie.setu.habitatapp.views.map
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import ie.setu.habitatapp.databinding.ActivitySpeciesMapsBinding
 import ie.setu.habitatapp.databinding.ContentSpeciesMapsBinding
 import ie.setu.habitatapp.main.MainApp
 import ie.setu.habitatapp.models.HabitatModel
-import ie.setu.habitatapp.views.map.SpeciesMapPresenter
 
 class SpeciesMapView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
@@ -38,7 +34,7 @@ class SpeciesMapView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
     }
 
-    fun showSpecies(speciesType: HabitatModel){
+    fun showSpecies(speciesType: HabitatModel) {
         contentBinding.currentTitle.text = speciesType.commonName
         contentBinding.currentDescription.text = speciesType.speciesDescription
         Picasso.get()

@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import ie.setu.habitatapp.views.habitat.HabitatView
 import ie.setu.habitatapp.main.MainApp
 import ie.setu.habitatapp.models.HabitatModel
+import ie.setu.habitatapp.views.map.SpeciesMapView
 
 class SpeciesListPresenter(val view: SpeciesListView) {
 
@@ -36,7 +37,7 @@ class SpeciesListPresenter(val view: SpeciesListView) {
     }
 
     fun doShowSpeciesMap() {
-        val launcherIntent = Intent(view, HabitatView::class.java)
+        val launcherIntent = Intent(view, SpeciesMapView::class.java)
         refreshIntentLauncher.launch(launcherIntent)
     }
 

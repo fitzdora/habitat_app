@@ -53,7 +53,7 @@ class  HabitatView : AppCompatActivity() {
             presenter.doSetLocation()
         }
 
-        binding.btnAdd.setOnClickListener {
+    /*    binding.btnAdd.setOnClickListener {
             if (binding.commonName.text.toString().isEmpty()) {
                 Snackbar.make(binding.root, R.string.enter_commonName, Snackbar.LENGTH_LONG)
                     .show()
@@ -64,7 +64,7 @@ class  HabitatView : AppCompatActivity() {
                     binding.habitatType.text.toString()
                 )
             }
-        }
+        }*/
     }
 
         override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -75,12 +75,22 @@ class  HabitatView : AppCompatActivity() {
         }
 
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
-            when(item.itemId){
-                R.id.item_delete -> {
-                    presenter.doDelete()
+            when (item.itemId) {
+                R.id.item_add -> {
+                    if (binding.commonName.text.toString().isEmpty()) {
+                        Snackbar.make(binding.root, R.string.enter_commonName, Snackbar.LENGTH_LONG)
+                            .show()
+                    } else {
+                        presenter.doAddOrSave(
+                            binding.commonName.text.toString(),
+                            binding.speciesDescription.text.toString(),
+                            binding.habitatType.text.toString()
+                        )
+                    }
                 }
+                R.id.item_delete -> { presenter.doDelete() }
                 R.id.item_cancel -> { presenter.doCancel() }
-            }
+        }
             return super.onOptionsItemSelected(item)
         }
 

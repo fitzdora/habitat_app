@@ -10,9 +10,16 @@
         app:showAsAction="always"/>
 
     <item
+        android:id="@+id/item_add"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/menu_addSpecies"
+        app:showAsAction="always"/>
+
+    <item
         android:id="@+id/item_cancel"
         android:icon="@android:drawable/ic_menu_close_clear_cancel"
         android:title="@string/menu_cancelSpecies"
         app:showAsAction="always"/>
+
 
 </menu>

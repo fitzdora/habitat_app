@@ -38,13 +38,12 @@ class EditLocationView : AppCompatActivity(), OnMapReadyCallback,
     }
 
     override fun onMarkerDragStart(marker: Marker) {
-
+        presenter.doUpdateLocation(marker.position.latitude, marker.position.longitude, map.cameraPosition.zoom)
     }
 
     override fun onMarkerDrag(marker: Marker) {
-
+        presenter.doUpdateMarker(marker)
     }
-
     override fun onMarkerDragEnd(marker: Marker) {
         presenter.doUpdateLocation(marker.position.latitude, marker.position.longitude, map.cameraPosition.zoom)
     }

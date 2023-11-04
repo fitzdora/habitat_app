@@ -71,7 +71,7 @@ class SpeciesListView : AppCompatActivity(), HabitatListener {
     }
 
     fun onRefresh(){
-        binding.recyclerView.adapter?.notifyItemRangeChanged(0, app.speciesTypes.findAll().size)
+        binding.recyclerView.adapter?.notifyItemRangeChanged(0, presenter.getSpecies().size)
     }
 
     fun onDelete(position: Int) {

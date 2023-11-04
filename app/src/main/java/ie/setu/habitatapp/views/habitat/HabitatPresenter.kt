@@ -61,6 +61,7 @@ class HabitatPresenter(private val view: HabitatView) {
     }
 
     fun doSetLocation(){
+        //Set location to Cobh
         val location = Location(51.8510, -8.29670, 15f)
         if (speciesType.zoom != 0f) {
             location.lat = speciesType.lat
